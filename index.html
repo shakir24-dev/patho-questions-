@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pathology Questions</title>
+</head>
+<body>
+  <h1>Pathology MCQs</h1>
+  <div id="app">Loading...</div>
 
+  <script>
+    fetch("https://sheetdb.io/api/v1/sshwojfyrm6c6")
+      .then(res => res.json())
+      .then(data => {
+        let html = "";
+        data.forEach((q, i) => {
+          html += `<p><b>${i+1}. ${q.Question}</b></p>`;
+          html += `<ul>
+            <li>A. ${q.Option1}</li>
+            <li>B. ${q.Option2}</li>
+            <li>C. ${q.Option3}</li>
+            <li>D. ${q.Option4}</li>
+          </ul><hr>`;
+        });
+        document.getElementById("app").innerHTML = html;
+      });
+  </script>
+</body>
+</html>
